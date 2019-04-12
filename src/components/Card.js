@@ -14,6 +14,12 @@ const Card = props => {
           <div className="header">
           {props.card.first_name}
           </div>
+          <div className="meta text-wrap">
+          Height: {props.card.height_feet}' {props.card.height_inches}"
+          </div>
+          <div className="meta text-wrap">
+          {props.card.team.full_name}
+          </div>
         </div>
       </div>
     </div>
