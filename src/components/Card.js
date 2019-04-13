@@ -12,13 +12,20 @@ const Card = props => {
         >
         <div className="content">
           <div className="header">
-          {props.card.first_name}
+          {props.card.first_name} {props.card.last_name}
+
           </div>
           <div className="meta text-wrap">
-          Height: {props.card.height_feet}' {props.card.height_inches}"
+          {props.card.height_feet? `Height: ${props.card.height_feet}' ${props.card.height_inches}"`: null}
           </div>
           <div className="meta text-wrap">
-          {props.card.team.full_name}
+          {props.card.weight_pounds? `Weight: ${props.card.weight_pounds}` : null}
+          </div>
+          <div className="meta text-wrap">
+          Position: {props.card.position}
+          </div>
+          <div className="meta text-wrap">
+          <strong>{props.card.team.full_name}</strong>
           </div>
         </div>
       </div>

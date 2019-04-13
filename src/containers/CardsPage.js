@@ -15,8 +15,8 @@ class CardsPage extends React.Component {
   }
 
   componentDidMount() {
-    console.log('literally anything please show!!!')
     this.getData()
+    // this.getPics()
     .then(data => console.log(this.state.cards))
     // .then(data => this.loadAllCards())
     // .then(data => console.log('from cdm', data))
@@ -31,6 +31,12 @@ class CardsPage extends React.Component {
     }))
   }
 
+  // getPics = () => {
+  //   return fetch('https://nba-players.herokuapp.com/players/James/LeBron')
+  //   .then(response => response.json())
+  //   .then(json => console.log(json))
+  // }
+
   addCardToMyCards = (e) => {
     let newCard = this.state.cards.find(card => {return card.id === e})
     if (this.state.myCards.includes(newCard)) {
@@ -42,11 +48,21 @@ class CardsPage extends React.Component {
     }
   }
 
+  removeCard = (e) => {
+    console.log(e)
+    const removedCard = this.state.myCards.filter(card => {
+      return card.id !== e
+    })
+    this.setState({
+      myCards: removedCard
+    })
+  }
+
 
   render() {
     return (
       <div>
-        <MyCards myCards={this.state.myCards}/>
+        <MyCards myCards={this.state.myCards} removeCard={this.removeCard}/>
         <AllCards cards = {this.state.cards} addCardToMyCards={this.addCardToMyCards}/>
       </div>
     )

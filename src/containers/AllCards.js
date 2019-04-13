@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../components/Card";
+import Form from "../components/Form";
 
 class AllCards extends React.Component {
   constructor(props){
@@ -9,6 +10,7 @@ class AllCards extends React.Component {
   render() {
     return (
       <div className="ui four column grid">
+      <Form />
         <div className="row">
           {this.props.cards.map((card, id) => {
             return <Card card={card} key={card.id} addCardToMyCards={this.props.addCardToMyCards}/>
