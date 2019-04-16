@@ -9,7 +9,11 @@ class CardsPage extends React.Component {
 
     this.state = {
       cards: [],
-      myCards: []
+      myCards: [],
+      stuff: {
+      firstName: '',
+      lastName: '',
+      teamName: ''}
     }
     // this.getData();
   }
@@ -17,18 +21,36 @@ class CardsPage extends React.Component {
   componentDidMount() {
     this.getData()
     // this.getPics()
-    .then(data => console.log(this.state.cards))
+    // .then(data => console.log(this.state.cards))
     // .then(data => this.loadAllCards())
     // .then(data => console.log('from cdm', data))
   }
 
   getData = () => {
-    return fetch('https://www.balldontlie.io/api/v1/players')
+    return fetch('http://localhost:3000/api/v1/players')
     .then(response => response.json())
+    // .then(console.log)
     .then(json =>
       this.setState({
-      cards: json['data']
+      cards: json
     }))
+  }
+
+
+
+  getFilteredData = (ev) => {
+    ev.preventDefault();
+    let data = {
+      firstName: ev.target.firstName.value,
+
+    }
+    this.setState(data
+    )
+    fetchRequest('http://localhost:3000/api/v1/players', 'post', data)
+    .then(res => res.json())
+    .then( json =>
+      this.setState({cards: json})
+    )
   }
 
   // getPics = () => {
@@ -41,7 +63,11 @@ class CardsPage extends React.Component {
     let newCard = this.state.cards.find(card => {return card.id === e})
     if (this.state.myCards.includes(newCard)) {
       return
-    } else {
+    }
+      else if (this.state.myCards.length > 4) {
+        return null
+      }
+     else {
       this.setState({
         myCards: [...this.state.myCards, newCard]
       })
@@ -61,9 +87,9 @@ class CardsPage extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="ui container">
         <MyCards myCards={this.state.myCards} removeCard={this.removeCard}/>
-        <AllCards cards = {this.state.cards} addCardToMyCards={this.addCardToMyCards}/>
+        {this.state.cards.length > 0 ? <AllCards cards = {this.state.cards} addCardToMyCards={this.addCardToMyCards} getFilteredData={this.getFilteredData}/> : 'loading...'}
       </div>
     )
   }
@@ -71,3 +97,16 @@ class CardsPage extends React.Component {
 }
 
 export default CardsPage;
+
+function fetchRequest(URL, method, data={}) {
+  const initial = {headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+    },
+    method: method,
+    body: JSON.stringify(data)
+  }
+                if (method.toLowerCase() === 'get') delete initial.body;
+                  else if (method.toLowerCase() === 'post' && initial.body.id) delete initial.body.id;
+                return fetch(URL, initial);
+}

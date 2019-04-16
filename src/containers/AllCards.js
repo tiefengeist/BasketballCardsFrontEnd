@@ -9,14 +9,16 @@ class AllCards extends React.Component {
 
   render() {
     return (
-      <div className="ui four column grid">
-      <Form />
-        <div className="row">
-          {this.props.cards.map((card, id) => {
-            return <Card card={card} key={card.id} addCardToMyCards={this.props.addCardToMyCards}/>
-          })}
-          </div>
-      </div>
+      <div className="ui segment all-cards">
+        <div className="ui five column grid">
+        <Form getFilteredData={this.props.getFilteredData}/>
+          <div className="row">
+            {this.props.cards.map((card, id) => {
+              return <Card card={card} key={card.id} addCardToMyCards={this.props.addCardToMyCards}/>
+            })}
+            </div>
+        </div>
+    </div>
     );
   }
 }

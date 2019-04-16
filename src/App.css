@@ -4,8 +4,12 @@
 
 .my-cards {
   overflow-x: scroll;
-  min-height: 300px;
+  min-height: 100px;
   max-width: 100%;
+}
+
+.addCardButton {
+  text-align: center;
 }
 
 .ui.grid > .row.my-card-row {
@@ -13,11 +17,21 @@
   min-height: 100%;
 }
 
+#logos {
+  height: 90px;
+}
+
 .ui.grid {
   padding: 0px 20px;
 }
 
+.card {
+  height: 270px;
+}
 
+.card-in-all-cards {
+  padding: 10px;
+}
 
 .App-header {
   background-color: #282c34;

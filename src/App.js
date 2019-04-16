@@ -15,3 +15,7 @@ class App extends Component {
 }
 
 export default App;
+
+// <div className="ui image"> 
+//   <img src = {props.}/>
+// </div>
