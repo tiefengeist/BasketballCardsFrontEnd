@@ -12,13 +12,13 @@ const Card = props => {
         onClick={(e) => props.addCardToMyCards(card.id)}
         >
 
-        <div className="content">
+        <div className="content" id="content">
 
           <div className="header">
           {props.card.first_name} {props.card.last_name}
-          <div class="ui slide masked reveal image">
-          {props.card.img !== null ? <img className="visible content" src={props.card.img} /> : <img className="visible content" src="http://blog.logomyway.com/wp-content/uploads/2017/01/nba-logo-design.jpg" />}
-          <img className="hidden content" src={imageUrl} id="logos"/>
+          <div className="ui slide masked reveal image">
+          {props.card.img !== null ? <img className="visible content" src={props.card.img} alt=""/> : <img className="visible content" alt="" src="http://blog.logomyway.com/wp-content/uploads/2017/01/nba-logo-design.jpg" />}
+          <img className="hidden content" src={imageUrl} id="logos" alt=""/>
           </div>
           </div>
           <div className="meta text-wrap">
@@ -33,7 +33,7 @@ const Card = props => {
           <div className="meta text-wrap">
           <strong>{props.card.team_name}</strong>
           </div>
-          <div className="meta text-wrap">
+          <div className="meta text-wrap" id="addPlayerButton">
           <button className="addCardButton">Add/Remove Player</button>
           </div>
         </div>

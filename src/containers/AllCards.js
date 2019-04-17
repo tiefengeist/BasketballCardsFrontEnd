@@ -3,21 +3,21 @@ import Card from "../components/Card";
 import Form from "../components/Form";
 
 class AllCards extends React.Component {
-  constructor(props){
-    super(props)
-  }
+  // constructor(props){
+  //   super(props)
+  // }
 
   render() {
     return (
       <div className="ui segment all-cards">
-        <div className="ui five column grid">
-        <Form getFilteredData={this.props.getFilteredData}/>
-          <div className="row">
-            {this.props.cards.map((card, id) => {
-              return <Card card={card} key={card.id} addCardToMyCards={this.props.addCardToMyCards}/>
-            })}
-            </div>
-        </div>
+          <div className="ui four column grid">
+          <Form getFilteredData={this.props.getFilteredData}/>
+            <div className="row">
+              {this.props.cards.map((card, id) => {
+                return <Card card={card} key={card.id} addCardToMyCards={this.props.addCardToMyCards}/>
+              })}
+              </div>
+          </div>
     </div>
     );
   }

@@ -10,7 +10,15 @@
 
 .addCardButton {
   text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
 }
+
+#content {
+  word-wrap: break-word;
+  white-space: normal;
+}
+
 
 .ui.grid > .row.my-card-row {
   flex-wrap: nowrap;
@@ -19,6 +27,14 @@
 
 #logos {
   height: 90px;
+}
+
+#teamForm {
+  margin-left: 45%;
+}
+#teamSubmit {
+  margin-left: 45%;
+
 }
 
 .ui.grid {

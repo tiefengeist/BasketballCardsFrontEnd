@@ -1,21 +1,32 @@
 import React, { Component } from 'react';
 import './App.css';
 import CardsPage from './containers/CardsPage'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import MyTeams from './components/MyTeams'
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <CardsPage />
-        </header>
+        <Router>
+          <Switch>
+            <header className="App-header">
+            <Route exact path= '/' component={()=> <CardsPage />}/>
+            <Route path= '/Teams' component={()=> <MyTeams />}/>
+
+            </header>
+          </Switch>
+        </Router>
       </div>
     );
   }
 }
 
 export default App;
-
-// <div className="ui image"> 
-//   <img src = {props.}/>
-// </div>
+// <Router>
+//   <div>
+//   </div>
+//   <Route exact path='/' component={CardsPage} />
+//   <Route path='/MyTeams' component={MyTeams}/>
+//   </Router>
