@@ -7,7 +7,7 @@ class MyCards extends React.Component {
   render() {
     return (
     <div>
-      <header> My Squad </header>
+      <header> My Squad <Link to='./Teams'><button>View My Teams</button></Link></header>
       <div className="ui segment inverted blue my-cards">
         <div className="ui container">
           <div className="ui two row grid">
@@ -18,13 +18,14 @@ class MyCards extends React.Component {
             })}
           </div>
         </div>
-        <div className="row" id="teamSubmit" >
-          <form id="teamForm">
+        <div className="center aligned row" id="teamSubmit" >
+          <form id="teamForm"  onSubmit={ev => this.props.saveTeamObject(ev)}>
             <label>Name Your Squad
-              <input type="text" name="teamName" />
+              <input type="text" name="teamName"/>
               </label>
+              <input type="submit" className="addTeamButton" value="Submit"/>
           </form>
-          <Link to='./Teams'><button className="addTeamButton" onClick={this.props.saveTeamObject}>Save Team</button></Link>
+
           </div>
         </div>
         </div>
