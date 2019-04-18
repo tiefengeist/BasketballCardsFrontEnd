@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import CardsPage from './containers/CardsPage'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import MyTeams from './components/MyTeams'
+import MyTeams from './containers/MyTeams'
 // import AllCards from './containers/AllCards'
 // import MyCards from './containers/MyCards'
 // import UserLogin from './containers/UserLogin'
@@ -55,6 +55,10 @@ class App extends Component {
     fetchRequest('http://localhost:3000/api/v1/users/', 'post', data)
     .then(res => res.json())
     .then(json => this.setState({user_id: json.id}))
+  }
+
+  logMeOut = (ev) => {
+    this.setState({loggedIn: false})
   }
 
   getFilteredData = (ev) => {
@@ -142,6 +146,7 @@ class App extends Component {
       else {
         alert("You need five players!")
       }
+
   }
 
 
@@ -151,7 +156,7 @@ class App extends Component {
         <Router>
           <Switch>
             <header className="App-header">
-              <Route exact path= '/' component={()=> <CardsPage loggedIn={this.state.loggedIn} myCards={this.state.myCards} removeCard={this.removeCard} saveTeamObject={this.saveTeamObject} cards = {this.state.cards} addCardToMyCards={this.addCardToMyCards} getFilteredData={this.getFilteredData} logMeIn={this.logMeIn} />}/>
+              <Route exact path= '/' component={()=> <CardsPage logMeOut={this.logMeOut} loggedIn={this.state.loggedIn} myCards={this.state.myCards} removeCard={this.removeCard} saveTeamObject={this.saveTeamObject} cards = {this.state.cards} addCardToMyCards={this.addCardToMyCards} getFilteredData={this.getFilteredData} logMeIn={this.logMeIn} />}/>
               <Route path= '/Teams' component={()=> <MyTeams myCards={this.state.myCards} user_id={this.state.user_id} getMyTeams={this.getMyTeams} teams={this.state.teams} user_id={this.state.user_id}/>}/>
             </header>
           </Switch>

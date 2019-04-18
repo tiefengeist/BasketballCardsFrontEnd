@@ -5,9 +5,9 @@ class Form extends React.Component {
     return (
     <div>
     <h4>Search For Your Player</h4>
-    <form onSubmit={ev => this.props.getFilteredData(ev)}>
+    <form className="ui form" onSubmit={ev => this.props.getFilteredData(ev)}>
       <input type="text" name="firstName" placeholder="Player Name"></input>
-      <input type="submit" value="submit"></input>
+      <input type="submit" value="Submit"></input>
     </form>
     </div>
   )

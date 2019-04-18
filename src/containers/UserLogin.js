@@ -10,7 +10,7 @@ class UserLogin extends React.Component {
           <input type="text" name="userName" placeholder="Enter Username"/>
         </div>
         <div className="field">
-          <input type="text" name="password" placeholder="Enter Password"/>
+          <input type="password" name="password" placeholder="Enter Password"/>
         </div>
           <button className="ui button" type="submit">Submit</button>
       </form>
