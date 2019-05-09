@@ -8,7 +8,7 @@ import MyTeams from './components/MyTeams'
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App">  
         <Router>
           <Switch>
             <header className="App-header">
